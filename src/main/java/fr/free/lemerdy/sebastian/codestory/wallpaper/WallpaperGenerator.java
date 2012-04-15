@@ -16,7 +16,7 @@ public class WallpaperGenerator extends PApplet {
 	private static final int IMAGE_HEIGHT = 900;
 	private static final float CODE_WIDTH = 1024;
 	private static final float CODE_HEIGHT = 347;
-	private static final float FONT_SIZE = 12;
+	private static final float FONT_SIZE = 10;
 
 	private String inputText;
 	private float paddingLeft;
