@@ -25,6 +25,10 @@ public class WallpaperGenerator extends PApplet {
 	private PFont font;
 	private PImage img;
 
+	public static void main(String[] args) {
+		PApplet.main(new String[] { "--present", WallpaperGenerator.class.getName() });
+	}
+
 	@Override
 	public void setup() {
 		sketchPath = System.getProperty("user.home");
