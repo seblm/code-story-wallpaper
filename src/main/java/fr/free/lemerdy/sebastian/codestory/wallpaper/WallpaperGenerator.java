@@ -14,8 +14,6 @@ import processing.core.PImage;
 public class WallpaperGenerator extends PApplet {
 
     private static final float KERNING = 0.5f;
-    private static final int IMAGE_WIDTH = 1440;
-    private static final int IMAGE_HEIGHT = 900;
     private static final float CODE_WIDTH = 1024;
     private static final float CODE_HEIGHT = 347;
     private static final float FONT_SIZE = 10;
@@ -31,7 +29,7 @@ public class WallpaperGenerator extends PApplet {
     public void setup() {
         sketchPath = System.getProperty("user.home");
 
-        size(IMAGE_WIDTH, IMAGE_HEIGHT);
+        size(displayWidth, displayHeight);
         smooth();
 
         font = createFont("Menlo-Regular", FONT_SIZE);
