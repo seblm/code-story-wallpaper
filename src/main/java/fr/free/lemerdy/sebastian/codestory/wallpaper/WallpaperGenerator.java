@@ -21,9 +21,13 @@ public class WallpaperGenerator extends PApplet {
     private String inputText;
     private float paddingLeft;
     private float paddingTop;
-
     private PFont font;
     private PImage img;
+
+    @Override
+    public boolean sketchFullScreen() {
+        return true;
+    }
 
     @Override
     public void setup() {
@@ -109,5 +113,9 @@ public class WallpaperGenerator extends PApplet {
         fill(235);
         textAlign(RIGHT);
         text("the power of refactoring", paddingLeft + CODE_WIDTH - 4, CODE_HEIGHT + paddingTop + 20);
+    }
+
+    public static void main(String... args) {
+        PApplet.main(WallpaperGenerator.class.getName());
     }
 }
