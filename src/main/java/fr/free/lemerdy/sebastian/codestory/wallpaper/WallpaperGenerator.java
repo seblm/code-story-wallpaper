@@ -14,8 +14,6 @@ import processing.core.PImage;
 public class WallpaperGenerator extends PApplet {
 
     private static final float KERNING = 0.5f;
-    private static final float CODE_WIDTH = 1024;
-    private static final float CODE_HEIGHT = 347;
     private static final float FONT_SIZE = 10;
 
     private String inputText;
@@ -23,6 +21,8 @@ public class WallpaperGenerator extends PApplet {
     private float paddingTop;
     private PFont font;
     private PImage img;
+    private int codeWidth;
+    private int codeHeight;
 
     @Override
     public boolean sketchFullScreen() {
@@ -39,9 +39,11 @@ public class WallpaperGenerator extends PApplet {
         font = createFont("Menlo-Regular", FONT_SIZE);
 
         img = loadImage("logo.png");
+        codeWidth = (int) (displayWidth * .8);
+        codeHeight = codeWidth * img.height / img.width;
 
-        paddingLeft = (width - CODE_WIDTH) / 2;
-        paddingTop = (height - CODE_HEIGHT) / 2;
+        paddingLeft = (width - codeWidth) / 2;
+        paddingTop = (height - codeHeight) / 2;
 
         noLoop();
 
@@ -57,7 +59,7 @@ public class WallpaperGenerator extends PApplet {
         float x = paddingLeft, y = paddingTop + spacing / 2;
         int counter = 0;
 
-        while (y < paddingTop + CODE_HEIGHT) {
+        while (y < paddingTop + codeHeight) {
             pushMatrix();
             translate(x, y);
 
@@ -70,7 +72,7 @@ public class WallpaperGenerator extends PApplet {
             x = x + letterWidth; // update x-coordinate
             popMatrix();
 
-            if (x + letterWidth >= paddingLeft + CODE_WIDTH) {
+            if (x + letterWidth >= paddingLeft + codeWidth) {
                 x = paddingLeft;
                 y = y + spacing; // add line height
             }
@@ -88,8 +90,8 @@ public class WallpaperGenerator extends PApplet {
 
     private int getColorFromImage(float x, float y) {
         // translate position (display) to position (image)
-        int imgX = (int) map(x, paddingLeft, paddingLeft + CODE_WIDTH, 0, img.width);
-        int imgY = (int) map(y, paddingTop, paddingTop + CODE_HEIGHT, 0, img.height);
+        int imgX = (int) map(x, paddingLeft, paddingLeft + codeWidth, 0, img.width);
+        int imgY = (int) map(y, paddingTop, paddingTop + codeHeight, 0, img.height);
         // get current color
         int c = img.pixels[imgY * img.width + imgX];
         int lightColor = color(64);
@@ -112,7 +114,7 @@ public class WallpaperGenerator extends PApplet {
     private void sign() {
         fill(235);
         textAlign(RIGHT);
-        text("the power of refactoring", paddingLeft + CODE_WIDTH - 4, CODE_HEIGHT + paddingTop + 20);
+        text("the power of refactoring", paddingLeft + codeWidth - 4, codeHeight + paddingTop + 20);
     }
 
     public static void main(String... args) {
