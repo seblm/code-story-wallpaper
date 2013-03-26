@@ -16,13 +16,13 @@ public class WallpaperGenerator extends PApplet {
     private static final float KERNING = 0.5f;
     private static final float FONT_SIZE = 10;
 
-    private String inputText;
-    private float paddingLeft;
-    private float paddingTop;
     private PFont font;
     private PImage img;
     private int codeWidth;
     private int codeHeight;
+    private float paddingLeft;
+    private float paddingTop;
+    private String inputText;
 
     @Override
     public boolean sketchFullScreen() {
